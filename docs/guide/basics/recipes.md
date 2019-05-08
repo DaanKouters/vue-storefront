@@ -277,3 +277,8 @@ It is necessary for the correct product image creation by the vue-storefront-api
 
 ## Syncing magento and vue-storefront-api servers / Fix for "An error occurred validating the nonce"
 There might be an issue with JWT token validation if one of the servers is more than 600 seconds behind the other. The 600 seconds limit is defined on Magento side by its `\Magento\Integration\Model\Oauth\Nonce\Generator::TIME_DEVIATION`. To fix this issue you need to make sure both severs `date` command show the same datetime  (or both at least below 10 minute difference). This can be done by utilizing `tzdata` package (sudo dpkg-reconfigure tzdata) or setting it directly with `date` package (e.g: `sudo date --set "23 Mar 2019 12:00:00"`, but providing the current datetime).
+
+## Generate 301 redirects
+When migrating of a existig webshop to Vue Storefront you might need to have 301 redirects if your Vue Storefront URL's are not matching the webshop urls already indexed by search engines.
+You can use the seo script that ships with the Vue Storefront API. You possibly have to make changes in the script, that depends totally on your URL structure.\n
+Run `yarn seo redirects` in the Vue Storefront API and use the generated file with redirects to your benefit.
